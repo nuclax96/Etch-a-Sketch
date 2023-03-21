@@ -3,9 +3,14 @@ const gridSizeSelect = document.querySelector("#box-size");
 
 let row, column;
 const startGame = (size) => {
+  eraseGrid();
   generateGrid(size, size);
-
   addGridListeners();
+};
+
+const eraseGrid = () => {
+  const gridItems = document.querySelectorAll("container");
+  console.log(gridItems);
 };
 const changeSize = (e) => {
   container.innerHTML = "";
