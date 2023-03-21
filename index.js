@@ -1,6 +1,9 @@
 const container = document.getElementById("container");
 const gridSizeSelect = document.querySelector("#box-size");
 
+// Buttons reference
+const clearBtn = document.querySelector(".clear");
+
 let row, column;
 const startGame = (size) => {
   eraseGrid();
@@ -9,14 +12,23 @@ const startGame = (size) => {
 };
 
 const eraseGrid = () => {
-  const gridItems = document.querySelectorAll("container");
-  console.log(gridItems);
+  const gridItems = document.querySelectorAll("#container div");
+  gridItems.forEach((item) => {
+    item.style.backgroundColor = "";
+  });
 };
 const changeSize = (e) => {
   container.innerHTML = "";
   startGame(e.target.value);
 };
+
+// Event Listeners
+
+// 1. Grid size change event listener
 gridSizeSelect.addEventListener("change", changeSize);
+
+// 2. Grid Clear Evenet listener
+clearBtn.addEventListener("click", eraseGrid);
 
 const addGridListeners = () => {
   const gridItems = document.querySelectorAll(".grid-item");
