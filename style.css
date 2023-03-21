@@ -8,6 +8,13 @@
   height: 500px;
 }
 
+.heading_main {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
 :root {
   --grid-cols: 1;
   --grid-rows: 1;
@@ -28,4 +35,18 @@
 
 .select-box {
   margin-bottom: 60px;
+}
+
+.container-main {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-btn {
+  margin-top: 55px;
 }
