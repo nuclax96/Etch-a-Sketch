@@ -1,13 +1,34 @@
-const container = document.querySelector(".container");
-const containerWidth = container.clientHeight;
-for (let i = 0; i < 5; i++) {
-  const dnode = document.createElement("div");
-  container.appendChild(dnode);
-  dnode.classList.add("grid-row");
-  for (let j = 0; j < 5; j++) {
-    const childDiv = document.createElement("div");
-    childDiv.classList.add("grid-column");
-    dnode.appendChild(childDiv);
-    console.log(childDiv.classList);
+const container = document.getElementById("container");
+const gridSizeSelect = document.querySelector("#box-size");
+
+let row, column;
+const startGame = (size) => {
+  generateGrid(size, size);
+
+  addGridListeners();
+};
+const changeSize = (e) => {
+  container.innerHTML = "";
+  startGame(e.target.value);
+};
+gridSizeSelect.addEventListener("change", changeSize);
+
+const addGridListeners = () => {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((item) => {
+    item.addEventListener("mouseover", (e) => {
+      e.target.style.backgroundColor = "black";
+    });
+  });
+};
+
+const generateGrid = (rows = 16, cols = 16) => {
+  container.style.setProperty("--grid-rows", rows);
+  container.style.setProperty("--grid-cols", cols);
+  for (c = 0; c < rows * cols; c++) {
+    let cell = document.createElement("div");
+    container.appendChild(cell).className = "grid-item";
   }
-}
+};
+
+startGame();
